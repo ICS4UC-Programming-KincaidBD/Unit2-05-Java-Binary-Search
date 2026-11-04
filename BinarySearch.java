@@ -18,19 +18,25 @@ public class BinarySearch {
         Scanner scanner = new Scanner(System.in);
         // Create an array with 10 random numbers in it.
         int[] array = populateArray(10);
-        System.out.print("Enter the target value: ");
+        System.out.print("Enter the target value or 'q' to quit: ");
         // Use this flag to keep asking until the input is a valid integer.
         boolean flag = false;
         int target = 0;
+        String user = "";
         // Repeat while the user has not entered a valid number.
         while (flag == false) {
             try {
                 // Try to read an integer and save it as the target.
-                target = scanner.nextInt();
+                user = scanner.next();
+                target = Integer.parseInt(user);
                 flag = true;
             } catch (Exception e) {
                 // If the input was not an integer, ask again and clear that input.
-                System.out.print("Invalid input. Please enter a valid integer: ");
+                if (user.equals("q")) {
+                    System.out.println("Exiting program.");
+                    System.exit(0);
+                }
+                System.out.print("Invalid input. Please enter a valid integer or 'q' to quit: ");
                 scanner.nextLine(); // Clear the invalid input
             }
         }
